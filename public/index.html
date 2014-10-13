@@ -54,8 +54,8 @@
 
 				<section>
 					<h2>@CarterRabasa</h2>
-					<h2>github.com/crabasa</h2>
 					<h2>carter@twilio.com</h2>
+					<h2>github.com/crabasa</h2>
 					<aside class="notes">
 
 					</aside>
@@ -100,9 +100,9 @@
 					
 					</aside>
 				</section>
-				
+
 				<section>
-				<img src="img/mindblown.gif" class="stretch"/>
+				<img src="img/mindblown_large.gif" class="stretch"/>
 					<aside class="notes">
 					* So, what happens when you take an industry like telecom and you unleash developers on it?
 					* [Click the image]
@@ -182,24 +182,20 @@
 				</section>
 
 				<section>
-					<style>
-						svg {
-							background-color: #3b3b3c;
-						}
-						circle {
-							fill: none;
-							stroke: #398FBD;
-						}
-					</style>
 
 					<h1>Web Audio API</h1>
-					<!--div id="audio_level"></div-->
+					
 					<canvas id="canvas" width="640" height="320"></canvas>
 					<aside class="notes">
 					* One of the cool things about WebRTC is how it plays nicely with other web standards
 					* Here's an example of analysing the volume of the call using Web Audio
 					</aside>
 				</section>
+
+				<!--section>
+					<h1>New in <em>Twilio.js</em> 1.2</h1>
+					<img class="stretch" src="img/getusermedia.png"/>
+				</section-->
 
 				<section>
 					<h1>Thank <em>You</em></h1>
@@ -256,23 +252,6 @@
 			});
 
 		</script>
-
-		<script type="text/javascript">
-		 	// some dirty code to handle the on-demand animation of a Gif.
-			frame=1;
-			var sup1 = new SuperGif({ gif: document.getElementById('best_gif') } );
-
-			sup1.load(function(){
-				sup1.move_to(frame);
-				$('.jsgif canvas').css('width', '100%');
-				$('.jsgif').show();
-			});
-			$('.jsgif').hide();
-			$('.jsgif').on('click', function(){
-			sup1.play();
-			});
-		</script>
-
 
 	</body>
 </html>
