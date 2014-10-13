@@ -2,15 +2,14 @@
 
 ## Setup
 
-`git clone <this repo>`
-
-`gem install sinatra`
-
-`gem install twilio`
-
 ```
+git clone <this repo>
+bundle install
+
 export TWILIO_ACCOUNT_SID=YOUR_ACCOUNT_SID
 export TWILIO_AUTH_TOKEN=YOUR_AUTH_TOKEN
+
+ruby index.rb
 ```
 
 ## Get the app on the public Internet
@@ -31,11 +30,37 @@ Go to http://yourdomain/index.html in your browser.
 
 1. Sign-up for a [free Twilio account](http://twilio.com/try-twilio)
 2. Purchase a new Twilio number or use the one you are given
-3. Set your `Messaging Request URL` to `http://yourdomain/sms` and `HTTP GET`.
+3. Set your `Messaging Request URL` to `http://yourdomain/message` and `HTTP GET`.
 
 ## Send and Recieve SMS
 
 Send a text message to your new Twilio number. You should get a canned response. Have a few people send a text to that phone number as well.
+
+## Call a random from your browser!
+
+Edit `index.rb`. On lines 17 and 20, replace the phone number there with your Twilio number. 
+
+Create a new [TwiML app](https://www.twilio.com/user/account/apps/add). Give it a name and set the `Voice Request URL` to `http://yourdomain/random`. Save the TwiML app and copy the App SID.
+
+One line 30, replace the App SID with the SID of the TwiML app your just created. Save `index.rb` and restart your server.
+
+Go to slide 12 and open up the JavaScript console. Enter the following commands:
+
+```
+$.ajax('/token').done(function(data) { Twilio.Device.setup(data); });
+Twilio.Device.connect(function(conn) { window.stream = conn.mediaStream.stream; });
+Twilio.Device.connect();
+```
+
+When the browser asks for permission to access your microphone, say "Accept". Your browser will then dial a random person who sent you an SMS earlier and you'll be connected. Say "hi" to your friend.
+
+## Visualize the call!
+
+Ok, don't hang up! Now it's time to visualize the call. Go to slide 13. In the JS console:
+
+`visualizeMediaStream(window.stream);`
+
+You should see a lovely visualization of the audio in your microphone. Enjoy!
 
 ## Meta 
 

@@ -14,10 +14,10 @@ end
 
 get '/random' do
   client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-  nums = client.messages.list(to: '+12027598424').collect{|m| m.from}.uniq
+  nums = client.messages.list(to: '+1202xxxxxxx').collect{|m| m.from}.uniq
   num = nums.sample
   twiml = Twilio::TwiML::Response.new do |r|
-    r.Dial callerId: '+12027598424' do |d|
+    r.Dial callerId: '+1202xxxxxxx' do |d|
       d.Number num
     end
   end
@@ -27,6 +27,6 @@ end
 
 get '/token' do
   capability = Twilio::Util::Capability.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-  capability.allow_client_outgoing 'APc8bd72e65533ce7dc6f90856396bdf50'
+  capability.allow_client_outgoing 'APxxx'
   capability.generate
 end
